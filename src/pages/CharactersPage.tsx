@@ -35,13 +35,14 @@ export default function CharactersPage() {
 
   const onSearch = useCallback(
     (v: string) => {
+      if (v === nameParam) return;
+
       const next = new URLSearchParams(searchParams);
       next.set("name", v);
       next.set("page", "1");
-
       setSearchParams(next, { replace: true });
     },
-    [searchParams, setSearchParams]
+    [nameParam, searchParams, setSearchParams]
   );
 
   const onPage = useCallback(
